@@ -25,6 +25,10 @@ var obj = {
   // This should tell you that the for loop is running 5 times. And all it's doing is running the body of the for loop once on each iteration. There's no magic there. 
   // The body of the for loop is just a block of code the same number of times are there are items in the array.
     // If we have 5 items in our array, we will run this block of code 5 times. 
+
+    for (var i = 0; i < arr.length; i++) {
+      console.log('hi, I\'m inside the loop for arrays!');
+    };
 // 2. Cool, now let's console.log what i is in each iteration.
   // You should see 
   // 0
@@ -42,6 +46,10 @@ var obj = {
   // Remember that a for loop is just a block of code that we execute the same number of times as we have items in the array. 
     // The only thing that changes each time is what i is. 
 
+for (var i = 0; i < arr.length; i++) {
+  console.log(i);
+}
+
 // 3. Alright, now that we've figured out that i is just a number on each iteration, let's use i to access each item in our arr. 
   // Create a new for loop to iterate through arr, console logging each item to the console. We expect to see
   // 100
@@ -57,6 +65,10 @@ var obj = {
     // 'the value of i is: 3, the value we're accessing in the array is 400'
     // 'the value of i is: 4, the value we're accessing in the array is 500'
 
+for (var i = 0; i < arr.length; i++) {
+  console.log('the value of i is: ' + i + ', the value we\'re accessing in the array is ' + arr[i]);
+}
+
 // 4. Great! Now you've figured out that i is just a number we can use to access each item in the array, one per iteration. 
   // Now let's use a new for loop to modify the array. Let's add 1 to each item in arr. 
   // Now that you've added 1 to each item in arr, console.log it to see the results. 
@@ -67,11 +79,28 @@ var obj = {
 
 // By this point you should be feeling pretty good on iterating through arrays using for loops! Now let's look into iterating through objects. 
 
+
+for (var i = 0; i < arr.length; i++) {
+  arr[i] = arr[i] + 1;
+  console.log(arr[i]);
+}
+
+
+
 // 5. Create a for loop for objects, to iterate through our obj. 
   // Inside the body of the for loop, console.log the string 'hi, i'm inside the for loop for objects!''
   // You should see this pop up 3 times in your console.
   // This should tell you that the for loop for our object is running 3 times. And, much like our array for loop, 
     // all it's doing is running the body of the for loop once on each iteration. 
+
+for (var key in obj){
+  console.log('hi, i\'m inside the for loop for objects!');
+}
+
+
+
+
+
 // 6. Now let's check out what key is on each iteration.
   // If you console.log the key in the for loop body, you should see 
   // 'city'
@@ -84,6 +113,13 @@ var obj = {
     // On each iteration, let's push the key into this arrayOfKeys. After your for loop, console.log the arrayOfKeys. 
     // You should see ['city', 'slingsCode', 'excitementLevel']. Note that they may not be in this order, 
     // since we can't guarantee the order that an object's keys are in. 
+
+var arrayOfKeys = [];
+for (var key in obj) {
+  arrayOfKeys.push(key);
+}
+console.log(arrayOfKeys);
+
 // 7. Ok, now that we've figured out that key is just a variable that will be set equal to the name of each property in obj, 
   // let's use that to access the values stored in obj. 
   // Write a new for loop to iterate through obj, console logging each value to the console. 
@@ -91,30 +127,68 @@ var obj = {
   // 'Oakland'
   // true
   // 10
+
+  for (var key in obj) {
+    console.log(obj[key])
+  }
+
   // Now that you're comfortable accessing each value in obj, let's console log both key and the relevant value stored in obj. 
   // So what we'd expect to see in our console is:
     // 'the value of key is: city, the value we're accessing in the object is Oakland'
     // 'the value of key is: slingsCode, the value we're accessing in the object is true'
     // 'the value of key is: excitementLevel, the value we're accessing in the object is 10'
+
+for (var key in obj) {
+  console.log("the value of the key is: " + key + ", and the value we\'re accessing in the object is " + obj[key]);
+}
+
 // 8. You should be feeling pretty great about iterating through objects now! 
   // So let's combine this with our if statement. 
   // Let's only log a value to the console if it equals 'Oakland'. 
+
+  for (var key in obj){
+  if (obj[key] === "Oakland"){
+console.log("the value of the key is: " + key + ", and the value we\'re accessing in the object is " + obj[key]);
+  }
+}
+
   // Great! Now, let's create a new for loop for arr. Inside that for loop, let's only console.log a value 
     // if it is both greater than 100 and less than 400
     // Remember that we use && for and statements. 
+
+for (var i = 0; i < arr.length; i++){
+  if(arr[i] > 100 && arr[i] < 400){
+      console.log(arr[i]);
+  }
+}
+
   // Inside another for loop for arr, only console.log the values that are either above 400, or less than 200. 
     // Remember that we use || for or statements. 
+
+for (var i = 0; i < arr.length;i++){
+  if (arr[i]>400 ||arr[i]< 200){
+  console.log(arr[i]);
+  }
+}
+
 // 9. Now let's combine an if statement with our array for loop. 
   // Let's put 
   // if(arr[i]) {
   //   console.log(arr[i]);
   // }
+
+for (var i = 0; i < arr.length;i++){
+  if (arr[i]== 1){
+  console.log(arr[i]);
+  }
+};
+
   // inside of our for loop. What do you expect this to log? 
   // Remember that JavaScript does type coercion, forcing whatever is in the conditional part of our if(conditional) statement to be a boolean value
   // Let's try this again:
-  // if(0) {
-  //   console.log(arr[i]);
-  // }
+  if(1) {
+     console.log(arr[i]);
+  }
   // Keep trying different combinations inside the conditional part of the if loop. Particularly, try:
   /*
   ''
@@ -138,12 +212,13 @@ var obj = {
     // x = 'I totally understand assignments!' means that we are overwriting any value that x had previously and setting x equal to the string 'I totally understand assignments!'. Play around with this a bit if you're curious! Curiosity is a wonderful trait in engineers :)
   // Bonus Round: Plus Equals += 
     // Let's show you an example. 
-    var plusEqualsVar = 5;
-    plusEqualsVar += 10;
+  var plusEqualsVar = 5;
+  plusEqualsVar += 10;
+  console.log(plusEqualsVar);
     // console.log('plusEqualsVar after += 10 is:',plusEqualsVar);
     // What += does is exacly the same as if you had typed 
-    var assignedVar = 5;
-    assignedVar = assignedVar = 10;
+    //var assignedVar = 5;
+    //assignedVar = assignedVar + 10;
     // console.log('assignedVar after assignedVar = assignedVar + 10 is:',assignedVar);
 
 
@@ -162,3 +237,6 @@ var obj = {
       // 'the value of i is: 2, the value we're accessing in the array is 300'
       // 'the value of i is: 1, the value we're accessing in the array is 200'
       // 'the value of i is: 0, the value we're accessing in the array is 100'
+for (var i = 4; i >= 0; i--){
+  console.log('the value of i is: ' + i + ', the value we\'re accessing in the array is ' + arr[i]);
+}
